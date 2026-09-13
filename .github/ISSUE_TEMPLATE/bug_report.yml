@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a reproducible build, runtime, or device-specific problem.
+body:
+  - type: input
+    id: revision
+    attributes:
+      label: Commit or release
+      placeholder: Output of git rev-parse HEAD, or release version
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Host OS and compiler; for device problems, include miner model, control board, hashboard revision, and firmware version.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include the exact command or configuration needed to reproduce the problem, with credentials removed.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Remove passwords, pool credentials, private keys, and enrollment data. Do not attach device installation or update packages.
+      render: text

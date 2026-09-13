@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  host-tests:
+    name: Host tests and native build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y python3 make clang autoconf automake libtool pkg-config
+      - name: Test build tools and source export
+        run: make check
+      - name: Test runtime
+        run: make runtime CC=clang
+      - name: Build and test native core
+        id: native
+        run: |
+          mkdir -p "$RUNNER_TEMP/hashminer-native"
+          make native NATIVE_CC="$(command -v clang)" JOBS=2 OUTPUT_PARENT="$RUNNER_TEMP/hashminer-native"
+      - name: Show native build diagnostics
+        if: failure() && steps.native.outcome == 'failure'
+        run: |
+          find "$RUNNER_TEMP/hashminer-native" -type f \( -name '*.log' -o -name 'receipt.json' \) -print -exec tail -n 80 {} \;

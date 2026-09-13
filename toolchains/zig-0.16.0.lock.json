@@ -1,0 +1,15 @@
+{
+  "name": "Zig",
+  "version": "0.16.0",
+  "host": "aarch64-macos",
+  "purpose": "isolated C cross compiler and source-provided musl runtime for ARM Linux; not a device artifact",
+  "url": "https://ziglang.org/download/0.16.0/zig-aarch64-macos-0.16.0.tar.xz",
+  "sha256": "b23d70deaa879b5c2d486ed3316f7eaa53e84acf6fc9cc747de152450d401489",
+  "size": 52238004,
+  "sourceURL": "https://ziglang.org/download/0.16.0/zig-0.16.0.tar.xz",
+  "sourceSHA256": "43186959edc87d5c7a1be7b7d2a25efffd22ce5807c7af99067f86f99641bfdf",
+  "provenance": "https://ziglang.org/download/index.json",
+  "checkedDate": "2026-09-09",
+  "licenseReview": "preserve bundled LICENSE and component notices; not all bundled runtime files share one license",
+  "installToSystem": false
+}

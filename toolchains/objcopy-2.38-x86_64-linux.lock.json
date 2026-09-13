@@ -1,0 +1,14 @@
+{
+  "tool": "GNU arm-none-eabi-objcopy",
+  "host": "x86_64-linux",
+  "version": "2.38",
+  "package": "binutils-arm-none-eabi",
+  "packageVersion": "2.38-3ubuntu1+15build1",
+  "provisionedPath": "/usr/bin/arm-none-eabi-objcopy",
+  "sha256": "1aa0730c7d30826852356952ab74b9a4391a47f2ace3245eb528f634edaea4a1",
+  "size": 1156416,
+  "provenance": "Operator-provisioned Ubuntu package; root-owned regular executable and clean dpkg -V checked by build operator on 2026-09-12",
+  "verificationScope": "Executable digest before and after use; complete host shared-library/package closure is an external prerequisite",
+  "purpose": "Create separate debug-free ARM release ELF with --strip-debug; preserve diagnostic ELF and verify allocated sections unchanged",
+  "systemInstallByBuilder": false
+}

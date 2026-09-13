@@ -1,0 +1,12 @@
+HashStat modifications to cgminer b8491c66e7e22f23a9edf095dd1337ee581e88bd:
+2026-09-13: HashMiner version 0.0.1-dev; source-only distribution and build
+configuration changes. Original copyright and license notices are retained.
+
+HashStat source files marked GPL-3.0-only are distributed under GNU GPLv3.
+The complete license is provided in LICENSE and core/COPYING.
+
+Mujina-derived BM1362 integrity code and public protocol fixtures retain their
+GPL-3.0-or-later notices and attribution to the Mujina contributors, revision
+019d1b0916457bb7ecd7cb7e93fee63c0329f9a2.
+Copyright Ryan Kuester and the Mujina contributors.
+https://github.com/256foundation/mujina/tree/019d1b0916457bb7ecd7cb7e93fee63c0329f9a2
