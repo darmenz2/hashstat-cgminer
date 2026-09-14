@@ -13,6 +13,54 @@
       "sha256": "119f39e3c54151a982cc92add3f5e6dac4ba907ea054e39c54814834bcfe45df"
     },
     {
+      "path": "hashstat-pure/aml88_start.c",
+      "sha256": "3fbcf0c4773b73412dea91a1fb1205bde48196dd061fdac365514cb301aac3de"
+    },
+    {
+      "path": "hashstat-pure/hs_aml88_start.h",
+      "sha256": "5d3bcfbc5b2a237cc6239f4024e124ed07a42087e532c354a411a7cc8b1b19a2"
+    },
+    {
+      "path": "hashstat-pure/bm1362_commands.c",
+      "sha256": "79fbdddb032ba062cb4e41aa0fadb04a3cfde036e74f2f1c6d1b84c1cc941c49"
+    },
+    {
+      "path": "hashstat-pure/hs_bm1362_commands.h",
+      "sha256": "12ad31461c8645eec4dfb8057b4d1f34b42c2825812c0c686db6cd1e6f7a603b"
+    },
+    {
+      "path": "hashstat-pure/bm1362_setup.c",
+      "sha256": "35bf96cf7f7c10ffe33c004305342e2cf8c91fe51b67dad6714df889fc5da9cc"
+    },
+    {
+      "path": "hashstat-pure/hs_bm1362_setup.h",
+      "sha256": "67d724f50cc10a6fbdb50552d39d9a657266e2fcb65cbccd65a90065e946c6e3"
+    },
+    {
+      "path": "hashstat-pure/bm1362_pll.c",
+      "sha256": "2181ab87ddc8e51ccafd9f14060cc992ec2f3e8607947869c7da428897905b26"
+    },
+    {
+      "path": "hashstat-pure/hs_bm1362_pll.h",
+      "sha256": "640f7843f0db6ee62b284823cafe6e82bb3d1deae0a140708d5b39a2cb57aca3"
+    },
+    {
+      "path": "hashstat-pure/aml_frame.c",
+      "sha256": "0b2ef6aafd697824b5e65bdad5bb3ca1aa45c375a73ded6acd0b9d4581cc895a"
+    },
+    {
+      "path": "hashstat-pure/hs_aml_frame.h",
+      "sha256": "57061e5002f795dc16aa9659f3e5bbf4962692651b442892c9fb0e8b90748484"
+    },
+    {
+      "path": "hashstat-pure/aml_uart_linux.c",
+      "sha256": "a3f546a621b63c6ccd92144a7be11f1fb1a140a6573064dfd5c784a37e269d88"
+    },
+    {
+      "path": "hashstat-pure/hs_aml_uart_linux.h",
+      "sha256": "20d0cd681c5bede5d3e218e632f2f2c5db806ae5235a06410c86adbf11b75946"
+    },
+    {
       "path": "hashstat-pure/aml88_profile.c",
       "sha256": "c9964b16679a0de950ee07e272b678127796581be93fa56aca8fcdc60224bbd3"
     },
@@ -182,8 +230,8 @@
     {
       "executable": false,
       "path": "Makefile.am",
-      "sha256": "c41d50001e291a00e78bc0b89eab2838456f5b978eec9313ceb236826a2f283e",
-      "size": 7568
+      "sha256": "52644cd6b0fc3924b49c1d7223a423e4197412b5956611f0e2828ae17d4b1fd1",
+      "size": 8177
     },
     {
       "executable": false,
@@ -2636,8 +2684,8 @@
     {
       "executable": false,
       "path": "driver-hashstat-aml88.c",
-      "sha256": "32db6cad886c1abbffaec9a24afa70fe893be575bf62fa264b45d3c505fe3b77",
-      "size": 660
+      "sha256": "c5e370e908af1481c2d5ab41542ebb4308465329fd09eaee924492c723defa21",
+      "size": 9324
     },
     {
       "executable": false,
@@ -2755,6 +2803,12 @@
     },
     {
       "executable": false,
+      "path": "hashstat-aml88-config.c",
+      "sha256": "c24895bdcd24858dc36e127af8fcb30a31c2f8053329824227237522ad8dfdbe",
+      "size": 7615
+    },
+    {
+      "executable": false,
       "path": "hashstat-aml88-core.c",
       "sha256": "1ec9ecf1b9823703e5ad3b8eff3f3a5b29853083e1bea506531fca0de624f73f",
       "size": 3022
@@ -2764,6 +2818,18 @@
       "path": "hashstat-aml88-core.h",
       "sha256": "244aa1c65b95845a6484d61fb9f3bc463309ae2a7025139c4a3dd34087037434",
       "size": 340
+    },
+    {
+      "executable": false,
+      "path": "hashstat-aml88-linux.c",
+      "sha256": "c2000978ed2fbef29c2097791d84e8ff088c06078e5d80ec407d9d55717cb15d",
+      "size": 21654
+    },
+    {
+      "executable": false,
+      "path": "hashstat-aml88-linux.h",
+      "sha256": "708cf8ad51133163b1927802eb74e2526edcd99b2a17fe8277e9129ed621b463",
+      "size": 1335
     },
     {
       "executable": false,
@@ -2785,9 +2851,21 @@
     },
     {
       "executable": false,
+      "path": "hashstat-pure/aml88_start.c",
+      "sha256": "3fbcf0c4773b73412dea91a1fb1205bde48196dd061fdac365514cb301aac3de",
+      "size": 10388
+    },
+    {
+      "executable": false,
       "path": "hashstat-pure/aml_chain.c",
       "sha256": "08cfe907e18743fc9767f28ccd0d1ca5194689ce9a0753da014fae58c5afe1f2",
       "size": 8223
+    },
+    {
+      "executable": false,
+      "path": "hashstat-pure/aml_frame.c",
+      "sha256": "0b2ef6aafd697824b5e65bdad5bb3ca1aa45c375a73ded6acd0b9d4581cc895a",
+      "size": 1455
     },
     {
       "executable": false,
@@ -2797,15 +2875,39 @@
     },
     {
       "executable": false,
+      "path": "hashstat-pure/aml_uart_linux.c",
+      "sha256": "a3f546a621b63c6ccd92144a7be11f1fb1a140a6573064dfd5c784a37e269d88",
+      "size": 16495
+    },
+    {
+      "executable": false,
+      "path": "hashstat-pure/bm1362_commands.c",
+      "sha256": "79fbdddb032ba062cb4e41aa0fadb04a3cfde036e74f2f1c6d1b84c1cc941c49",
+      "size": 5105
+    },
+    {
+      "executable": false,
       "path": "hashstat-pure/bm1362_integrity.c",
       "sha256": "9874bffecaf610c927edba39edb0e648001eb25798ac3a4e05559dac3838f60a",
       "size": 1953
     },
     {
       "executable": false,
+      "path": "hashstat-pure/bm1362_pll.c",
+      "sha256": "2181ab87ddc8e51ccafd9f14060cc992ec2f3e8607947869c7da428897905b26",
+      "size": 3061
+    },
+    {
+      "executable": false,
       "path": "hashstat-pure/bm1362_rx.c",
       "sha256": "15779036509078221e44f54712a5acecac111542ac38eef590731d9c3e25e754",
       "size": 3968
+    },
+    {
+      "executable": false,
+      "path": "hashstat-pure/bm1362_setup.c",
+      "sha256": "35bf96cf7f7c10ffe33c004305342e2cf8c91fe51b67dad6714df889fc5da9cc",
+      "size": 7787
     },
     {
       "executable": false,
@@ -2821,9 +2923,21 @@
     },
     {
       "executable": false,
+      "path": "hashstat-pure/hs_aml88_start.h",
+      "sha256": "5d3bcfbc5b2a237cc6239f4024e124ed07a42087e532c354a411a7cc8b1b19a2",
+      "size": 1967
+    },
+    {
+      "executable": false,
       "path": "hashstat-pure/hs_aml_chain.h",
       "sha256": "1924e2e8eb8d7f906313e00878a6494faae8424da1e372eabe2712250df23969",
       "size": 1708
+    },
+    {
+      "executable": false,
+      "path": "hashstat-pure/hs_aml_frame.h",
+      "sha256": "57061e5002f795dc16aa9659f3e5bbf4962692651b442892c9fb0e8b90748484",
+      "size": 639
     },
     {
       "executable": false,
@@ -2833,15 +2947,39 @@
     },
     {
       "executable": false,
+      "path": "hashstat-pure/hs_aml_uart_linux.h",
+      "sha256": "20d0cd681c5bede5d3e218e632f2f2c5db806ae5235a06410c86adbf11b75946",
+      "size": 1838
+    },
+    {
+      "executable": false,
+      "path": "hashstat-pure/hs_bm1362_commands.h",
+      "sha256": "12ad31461c8645eec4dfb8057b4d1f34b42c2825812c0c686db6cd1e6f7a603b",
+      "size": 1823
+    },
+    {
+      "executable": false,
       "path": "hashstat-pure/hs_bm1362_integrity.h",
       "sha256": "76c78880fcc403ec7f2941d147297c7a9daf7b5853b6610e8acdef88f1bcf9df",
       "size": 1172
     },
     {
       "executable": false,
+      "path": "hashstat-pure/hs_bm1362_pll.h",
+      "sha256": "640f7843f0db6ee62b284823cafe6e82bb3d1deae0a140708d5b39a2cb57aca3",
+      "size": 717
+    },
+    {
+      "executable": false,
       "path": "hashstat-pure/hs_bm1362_rx.h",
       "sha256": "7f27c6eb70682c207bfbdc0efb85d9db4ec9b29e87d5f76cc45b983b04c0e06b",
       "size": 1264
+    },
+    {
+      "executable": false,
+      "path": "hashstat-pure/hs_bm1362_setup.h",
+      "sha256": "67d724f50cc10a6fbdb50552d39d9a657266e2fcb65cbccd65a90065e946c6e3",
+      "size": 2557
     },
     {
       "executable": false,
@@ -3301,6 +3439,12 @@
     },
     {
       "executable": false,
+      "path": "tests/hashstat/test_aml88_config.c",
+      "sha256": "a85b4d4aece36ab8c396f44bb32127fe8ef0cb996851de6e009b1930c15c9f1e",
+      "size": 3373
+    },
+    {
+      "executable": false,
       "path": "tests/hashstat/test_core.c",
       "sha256": "9a141ed1a1badd40905d0f71526cf1f1fdfa6967517ba87899db226947a7d471",
       "size": 4751
@@ -3314,8 +3458,8 @@
     {
       "executable": false,
       "path": "tests/hashstat/test_stratum.c",
-      "sha256": "502a9356c7b20920c1dbc08de0ccd39fc5b4907c1d19fdcfc8b031e9cab5d9ca",
-      "size": 13389
+      "sha256": "888b23363d9e876048e03fa1b7f5c688d43728bb8f1803432c06c8ad9965cbeb",
+      "size": 13471
     },
     {
       "executable": false,
@@ -3382,20 +3526,26 @@
     {
       "executable": false,
       "path": "Makefile",
-      "sha256": "cfe8e325cbf4664b88dc39c9e6682475a93f16197ddbaf3a264dd27b1641141f",
-      "size": 1263
+      "sha256": "fa8ca50fb02612c3ef2e1c5ad96e65636bf8a8444edc5e96d30627b1643f59a4",
+      "size": 1327
     },
     {
       "executable": false,
       "path": "NOTICE",
-      "sha256": "7b996aedaf9faa0425bf90933c13c3d7f5b5141c0a3c8013258cd19d1f187d3c",
-      "size": 704
+      "sha256": "fa0c8bbb45a39d22a6b35fe7dc51ec572e8d34866d1643cc69100b3d498ca1c5",
+      "size": 1174
     },
     {
       "executable": false,
       "path": "include/hs_aml88_profile.h",
       "sha256": "015c38f81a083666f5a2bc29c92fc59b19df4cbfe81189d7ec164ac920b7436c",
       "size": 3066
+    },
+    {
+      "executable": false,
+      "path": "include/hs_aml88_start.h",
+      "sha256": "5d3bcfbc5b2a237cc6239f4024e124ed07a42087e532c354a411a7cc8b1b19a2",
+      "size": 1967
     },
     {
       "executable": false,
@@ -3424,8 +3574,8 @@
     {
       "executable": false,
       "path": "include/hs_bm1362_commands.h",
-      "sha256": "31c120340cebfb3fe3d2fd530c7c55f0fe3f7ea446016917e21bcd6af79d6276",
-      "size": 1581
+      "sha256": "12ad31461c8645eec4dfb8057b4d1f34b42c2825812c0c686db6cd1e6f7a603b",
+      "size": 1823
     },
     {
       "executable": false,
@@ -3561,6 +3711,12 @@
     },
     {
       "executable": false,
+      "path": "src/aml88_start.c",
+      "sha256": "3fbcf0c4773b73412dea91a1fb1205bde48196dd061fdac365514cb301aac3de",
+      "size": 10388
+    },
+    {
+      "executable": false,
       "path": "src/aml_frame.c",
       "sha256": "0b2ef6aafd697824b5e65bdad5bb3ca1aa45c375a73ded6acd0b9d4581cc895a",
       "size": 1455
@@ -3580,8 +3736,8 @@
     {
       "executable": false,
       "path": "src/bm1362_commands.c",
-      "sha256": "2483a761348baeb7e42c11f602ac77c74b06d15520310a17ff115026da5aa072",
-      "size": 4896
+      "sha256": "79fbdddb032ba062cb4e41aa0fadb04a3cfde036e74f2f1c6d1b84c1cc941c49",
+      "size": 5105
     },
     {
       "executable": false,
@@ -3672,6 +3828,12 @@
       "path": "tests/test_aml88_profile.c",
       "sha256": "e7b2993ad48fadb29d0d2c93c7bf1f7c7e5b2659b468be26bac5bb2f4e2b04d9",
       "size": 9329
+    },
+    {
+      "executable": false,
+      "path": "tests/test_aml88_start.c",
+      "sha256": "fad7b0dfc5fdb0e00fac7b6b68c368457a3c8d419af482fa8515996ea512c55a",
+      "size": 6925
     },
     {
       "executable": false,
@@ -3910,8 +4072,14 @@
     {
       "executable": false,
       "path": "tools/sync_core_portable.py",
-      "sha256": "8a2bbdfd5591b7df0fb40929d2bfac2e80436ba925949ce1e7e5c19f63092e0c",
-      "size": 2297
+      "sha256": "0950803b43d3289b16a9d5106766830abd1f1995fca9278c0a85ed8aa5a1e786",
+      "size": 2649
+    },
+    {
+      "executable": false,
+      "path": "tools/test_aml88.py",
+      "sha256": "2b004ba9fb93aef3516a82dccbface8d2542083a27795a1d0454d147c6eec224",
+      "size": 1143
     },
     {
       "executable": false,

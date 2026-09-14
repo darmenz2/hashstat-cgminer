@@ -25,3 +25,7 @@ runtime:
 	$(PYTHON) -B tools/test_span.py --cc "$(CC)"
 	$(PYTHON) -B tools/test_miner_owner.py --cc "$(CC)"
 	$(PYTHON) -B tools/test_hashminer_runtime.py --cc "$(CC)"
+
+.PHONY: aml88-test
+aml88-test:
+	python3 -B tools/test_aml88.py

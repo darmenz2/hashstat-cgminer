@@ -19,6 +19,13 @@ make runtime CC=clang
 
 For the native cgminer build, cross-compilation prerequisites, and output locations, see [Building](docs/build.md).
 
+## Experimental AML88 bench driver
+
+An opt-in, one-chain BM1362 driver is available for development. Read
+[the bench procedure and limitations](docs/aml88-driver.md) before enabling hardware access.
+No production or pool-accepted hardware result is claimed by this source update.
+Run `make aml88-test` for the synthetic startup tests.
+
 ## Source layout
 
 | Path | Contents |

@@ -1,4 +1,4 @@
-name: Publish verified AML88 bench driver
+name: AML88 bench driver CI
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   host-tests:
@@ -15,42 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
         with:
-          persist-credentials: true
+          persist-credentials: false
       - name: Install host build tools
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y python3 make clang autoconf automake libtool pkg-config
-      - name: Restore checked source patch and manifest
-        run: |
-          python3 - <<'PY'
-          import base64, hashlib, json, lzma, os, subprocess, sys
-          from pathlib import Path
-          root = Path.cwd()
-          parts = sorted((root / '.github/aml88-transfer').glob('*.b64'))
-          assert [p.name for p in parts] == ['01.b64', '02.b64', '03.b64', '04.b64']
-          patch = lzma.decompress(base64.b64decode(''.join(p.read_text().strip() for p in parts), validate=True))
-          assert hashlib.sha256(patch).hexdigest() == 'db7b65165c1e2e1ad51be7a1b44e790a7400cd30b3065bd9f7330ab7fa9c02dc'
-          path = Path(os.environ['RUNNER_TEMP']) / 'aml88-implementation.patch'
-          path.write_bytes(patch)
-          subprocess.run(['git', 'apply', '--check', str(path)], check=True)
-          subprocess.run(['git', 'apply', str(path)], check=True)
-          subprocess.run([sys.executable, 'tools/sync_core_portable.py', '--copy-new'], check=True)
-          license_path = root / 'docs/references/amlogic-cb-tools-LICENSE'
-          license_path.parent.mkdir(parents=True, exist_ok=True)
-          license_data = (root / 'LICENSE').read_bytes()
-          assert hashlib.sha256(license_data).hexdigest() == '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-          license_path.write_bytes(license_data)
-          sys.path.insert(0, str(root / 'tools'))
-          from sync_core_portable import PORTABLE
-          from build_cgminer_core import metadata, source_names
-          lock_path = root / 'source-lock.json'
-          lock = json.loads(lock_path.read_text())
-          lock['sourceFiles'] = metadata(source_names(root / 'core'), root / 'core')
-          lock['portableFiles'] = [{'path': 'hashstat-pure/' + Path(x).name, 'sha256': hashlib.sha256((root / x).read_bytes()).hexdigest()} for x in PORTABLE]
-          names = sorted(set(x['path'] for x in lock['supportFiles']) | {'tools/test_aml88.py', 'tests/test_aml88_start.c', 'include/hs_aml88_start.h', 'src/aml88_start.c'})
-          lock['supportFiles'] = metadata(names, root)
-          lock_path.write_text(json.dumps(lock, indent=2, sort_keys=True) + '\n')
-          PY
       - name: Host verification (no ASIC access)
         run: |
           set -euo pipefail
@@ -60,21 +29,6 @@ jobs:
           make runtime CC=clang 2>&1 | tee "$RUNNER_TEMP/aml88-logs/runtime.log"
           make aml88-test 2>&1 | tee "$RUNNER_TEMP/aml88-logs/aml88.log"
           make native NATIVE_CC="$(command -v clang)" JOBS=2 OUTPUT_PARENT="$RUNNER_TEMP/aml88-native" 2>&1 | tee "$RUNNER_TEMP/aml88-logs/native.log"
-      - name: Publish sources only on the development branch
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          import shutil
-          from pathlib import Path
-          shutil.rmtree('.github/aml88-transfer')
-          Path('.github/workflows/aml88-dev.yml').write_text('name: AML88 bench driver CI\n\non:\n  push:\n    branches: [work/aml88-driver]\n  workflow_dispatch:\n\npermissions:\n  contents: read\n\njobs:\n  host-tests:\n    runs-on: ubuntu-24.04\n    timeout-minutes: 15\n    steps:\n      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09\n        with:\n          persist-credentials: false\n      - name: Install host build tools\n        run: |\n          sudo apt-get update\n          sudo apt-get install --no-install-recommends -y python3 make clang autoconf automake libtool pkg-config\n      - name: Host verification (no ASIC access)\n        run: |\n          set -euo pipefail\n          unset HASHSTAT_AML88_CONFIG\n          mkdir -p "$RUNNER_TEMP/aml88-logs" "$RUNNER_TEMP/aml88-native"\n          make check 2>&1 | tee "$RUNNER_TEMP/aml88-logs/check.log"\n          make runtime CC=clang 2>&1 | tee "$RUNNER_TEMP/aml88-logs/runtime.log"\n          make aml88-test 2>&1 | tee "$RUNNER_TEMP/aml88-logs/aml88.log"\n          make native NATIVE_CC="$(command -v clang)" JOBS=2 OUTPUT_PARENT="$RUNNER_TEMP/aml88-native" 2>&1 | tee "$RUNNER_TEMP/aml88-logs/native.log"\n      - name: Collect native receipts and logs\n        if: always()\n        run: |\n          mkdir -p "$RUNNER_TEMP/aml88-logs"\n          find "$RUNNER_TEMP/aml88-native" -maxdepth 2 -type f \\( -name \'*.log\' -o -name \'receipt.json\' \\) -exec cp --parents {} "$RUNNER_TEMP/aml88-logs" \\; || true\n          git rev-parse HEAD > "$RUNNER_TEMP/aml88-logs/source-commit.txt"\n      - uses: actions/upload-artifact@v4\n        if: always()\n        with:\n          name: aml88-host-validation\n          path: ${{ runner.temp }}/aml88-logs\n          retention-days: 7\n          if-no-files-found: error\n')
-          PY
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add Makefile NOTICE README.md core docs examples include src tests tools source-lock.json .github
-          git diff --cached --check
-          git commit -m 'Implement opt-in AML88 one-chain bench driver and host tests [skip ci]'
-          git push origin HEAD:refs/heads/work/aml88-driver
       - name: Collect native receipts and logs
         if: always()
         run: |
@@ -85,6 +39,6 @@ jobs:
         if: always()
         with:
           name: aml88-host-validation
-          path: ${{ runner.temp }}/aml88-logs
+          path: /home/runner/work/_temp/aml88-logs
           retention-days: 7
           if-no-files-found: error

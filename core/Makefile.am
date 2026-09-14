@@ -58,7 +58,14 @@ cgminer_SOURCES += hashstat-core.c hashstat-core.h hashstat-pure/hs_span.h \
                   hashstat-pure/pow.c hashstat-pure/hs_pow.h
 
 if HAS_HASHSTAT_AML88
-cgminer_SOURCES += driver-hashstat-aml88.c hashstat-stratum.c hashstat-stratum.h
+cgminer_SOURCES += driver-hashstat-aml88.c hashstat-stratum.c hashstat-stratum.h \
+                  hashstat-aml88-linux.c hashstat-aml88-linux.h hashstat-aml88-config.c \
+                  hashstat-pure/aml88_start.c hashstat-pure/hs_aml88_start.h \
+                  hashstat-pure/bm1362_commands.c hashstat-pure/hs_bm1362_commands.h \
+                  hashstat-pure/bm1362_setup.c hashstat-pure/hs_bm1362_setup.h \
+                  hashstat-pure/bm1362_pll.c hashstat-pure/hs_bm1362_pll.h \
+                  hashstat-pure/aml_frame.c hashstat-pure/hs_aml_frame.h \
+                  hashstat-pure/aml_uart_linux.c hashstat-pure/hs_aml_uart_linux.h
 cgminer_CPPFLAGS += -I$(top_srcdir)/hashstat-pure
 cgminer_SOURCES += hashstat-supervisor.c hashstat-supervisor.h hashstat-version.h \
                   hashstat-aml88-bridge.c hashstat-aml88-bridge.h \
@@ -245,7 +252,7 @@ hashstat_core_test_SOURCES = tests/hashstat/test_core.c hashstat-core.c hashstat
 hashstat_core_test_CPPFLAGS = -I$(top_srcdir)
 hashstat_stratum_test_SOURCES = $(cgminer_SOURCES) tests/hashstat/test_stratum.c \
                               tests/hashstat/test_handshake.c \
-                              tests/hashstat/test_aml88_bridge.c
+                              tests/hashstat/test_aml88_bridge.c tests/hashstat/test_aml88_config.c
 hashstat_stratum_test_CPPFLAGS = $(cgminer_CPPFLAGS) -I$(top_srcdir) \
                                -UNDEBUG -DHASHSTAT_STRATUM_PARSER_TEST -Dmain=hs_unused_core_main
 hashstat_stratum_test_LDFLAGS = $(cgminer_LDFLAGS)

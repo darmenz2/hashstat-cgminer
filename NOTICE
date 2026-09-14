@@ -10,3 +10,11 @@ GPL-3.0-or-later notices and attribution to the Mujina contributors, revision
 019d1b0916457bb7ecd7cb7e93fee63c0329f9a2.
 Copyright Ryan Kuester and the Mujina contributors.
 https://github.com/256foundation/mujina/tree/019d1b0916457bb7ecd7cb7e93fee63c0329f9a2
+
+2026-09-14 AML88 one-chain experimental integration:
+BM1362 register/sequence references: kano cgminer, revision
+ d689d3a9057e8852de51d5c7f402ce26cbceaea5, driver-gekko.c.
+Copyright 2021-2026 kano; 2021-2024 sidehack; 2017-2021 vh. GPL version 3.
+Amlogic UART/GPIO and APW12 protocol references: skot/amlogic-cb-tools,
+revision 2439d6061c20d0294da66875f2fa6390c25b0ffb. Its LICENSE is retained
+at docs/references/amlogic-cb-tools-LICENSE. No vendor binary is included.

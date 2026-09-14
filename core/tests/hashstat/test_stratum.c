@@ -19,6 +19,7 @@ extern bool hs_test_submit_queued(struct pool *, struct work *);
 extern bool hs_test_parse_stratum_response(struct pool *, char *);
 extern unsigned hs_test_handshake(void);
 extern unsigned hs_test_aml88_bridge(void);
+extern unsigned hs_test_aml88_config(void);
 static unsigned checks;
 #define CHECK(x) do { ++checks; if (!(x)) { \
     fprintf(stderr, "FAIL line %d: %s\n", __LINE__, #x); exit(1); } } while (0)
@@ -252,6 +253,7 @@ int main(void)
     test_snapshots(&pool);
     checks += hs_test_handshake();
     checks += hs_test_aml88_bridge();
+    checks += hs_test_aml88_config();
     CHECK(pthread_mutex_destroy(&console_lock) == 0);
     printf("PASS %u real upstream Stratum parser/work assertions; no external connections\n", checks);
     return 0;

@@ -10,6 +10,12 @@ DESTINATION = ROOT / "core/hashstat-pure"
 PORTABLE = (
     "include/hs_span.h",
     "src/pow.c", "include/hs_pow.h",
+    "src/aml88_start.c", "include/hs_aml88_start.h",
+    "src/bm1362_commands.c", "include/hs_bm1362_commands.h",
+    "src/bm1362_setup.c", "include/hs_bm1362_setup.h",
+    "src/bm1362_pll.c", "include/hs_bm1362_pll.h",
+    "src/aml_frame.c", "include/hs_aml_frame.h",
+    "transport/runtime/aml_uart_linux.c", "transport/include/hs_aml_uart_linux.h",
     "src/aml88_profile.c", "include/hs_aml88_profile.h",
     "src/job_cache.c", "include/hs_job_cache.h",
     "src/bm1362_rx.c", "include/hs_bm1362_rx.h",
