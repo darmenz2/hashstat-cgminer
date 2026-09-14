@@ -1,0 +1,37 @@
+name: AML88 development
+
+on:
+  push:
+    branches: [work/aml88-driver]
+    paths: [.github/workflows/aml88-dev.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sources:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - name: Collect read-only development sources
+        run: |
+          set -eu
+          mkdir -p "$RUNNER_TEMP/aml88-sources"
+          git archive --format=tar HEAD > "$RUNNER_TEMP/aml88-sources/hashstat.tar"
+          git rev-parse HEAD > "$RUNNER_TEMP/aml88-sources/hashstat.sha"
+          git clone --depth=1 https://github.com/skot/amlogic-cb-tools.git "$RUNNER_TEMP/amlogic-cb-tools"
+          git -C "$RUNNER_TEMP/amlogic-cb-tools" archive --format=tar HEAD > "$RUNNER_TEMP/aml88-sources/amlogic-cb-tools.tar"
+          git -C "$RUNNER_TEMP/amlogic-cb-tools" rev-parse HEAD > "$RUNNER_TEMP/aml88-sources/amlogic-cb-tools.sha"
+          git clone --depth=1 https://github.com/kanoi/cgminer.git "$RUNNER_TEMP/kano-cgminer"
+          git -C "$RUNNER_TEMP/kano-cgminer" archive --format=tar HEAD > "$RUNNER_TEMP/aml88-sources/kano-cgminer.tar"
+          git -C "$RUNNER_TEMP/kano-cgminer" rev-parse HEAD > "$RUNNER_TEMP/aml88-sources/kano-cgminer.sha"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aml88-development-sources
+          path: ${{ runner.temp }}/aml88-sources
+          retention-days: 3
+          if-no-files-found: error
