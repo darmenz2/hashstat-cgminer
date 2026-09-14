@@ -5,7 +5,7 @@ cgminer-based source tree for **HashMiner**, the mining component of HashStat.
 #IMPORTANT
 At the moment, the full firmware has not been released—only a portion of it; the firmware will be released only after the drivers for the majority of models are working correctly. 
 !!!Currently, only the framework is posted in the git repository!!!
-#IMPORTANT
+IMPORTANT#
 
 The repository contains the cgminer core, portable work and proof-of-work routines, AML/BM1362 protocol components, runtime code, and build tools. The current source version is `0.0.1-dev`. Hardware bring-up is in progress; this snapshot is not a production firmware image.
 
