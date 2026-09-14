@@ -39,6 +39,6 @@ jobs:
         if: always()
         with:
           name: aml88-host-validation
-          path: /home/runner/work/_temp/aml88-logs
+          path: ${{ runner.temp }}/aml88-logs
           retention-days: 7
           if-no-files-found: error
